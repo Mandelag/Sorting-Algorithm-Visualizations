@@ -9,10 +9,11 @@ export function randomize(size){
  }
 
 export function selectionSort(arr){
+    let temp
     for(let x=0; x<arr.length-1; x++){
         let index = x
-        for(let y=index+1; y<arr1.length; y++){
-            if(arr[y] < arr[index]){
+        for(let y=index+1; y<arr.length; y++){
+            if(arr[y].value < arr[index].value){
                 index = y;
             }
         }
@@ -22,9 +23,10 @@ export function selectionSort(arr){
             arr[index] = temp
         }
     }
+    return arr
  }
 
- export function bubbleSort(arr){
+ export async function bubbleSort(arr){
     let sorted = false
     let temp
     
@@ -50,6 +52,12 @@ export function selectionSort(arr){
 
     }  
 }
+
+function sleep() {
+    return new Promise(resolve => {
+
+    });
+  }
 
 /*
 export function mergeSort(component){
@@ -108,9 +116,6 @@ function merge(left, right, component) { //part of merge sort
 
     return arr1
  }
+ */
 
- function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
 
-*/
