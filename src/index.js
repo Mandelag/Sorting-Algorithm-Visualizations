@@ -9,7 +9,7 @@ const ReactDOM = require('react-dom')
 class Chart extends React.Component{
     render(){
         return(
-            <BarChart width={1000} height={500} data={this.props.data}>
+            <BarChart width={750} height={150} data={this.props.data}>
                 <Bar dataKey="value" fill="#62DAFB" />
             </BarChart>
         )
@@ -19,48 +19,66 @@ class Chart extends React.Component{
 class App extends React.Component{
     constructor(props){
         super(props)
-        let arr = new Array(50).fill({value:10})
-        this.state = {
-            data: arr
-        }
+        this.state = {}
+
+        this.randomizeCharts = this.randomizeCharts.bind(this)
+    }
+
+    componentDidMount() {
+        this.randomizeCharts()
+    }
+
+    randomizeCharts() {
+        let arr = []
+        const random = randomize(50)
+        random.map((n) => {
+            arr.push({value: n})
+        })
+        this.setState({
+            selectionData: arr,
+            insertionData: arr,
+            bubbleData: arr,
+            mergeData: arr
+        })
+    }
+
+    sortStep() {
+
     }
 
     render(){
+
         return(
             <div>
-                <Chart data={this.state.data}/>
-                <div className="button-group">
+                <div className="chart-row">
+                    <Chart data={this.state.selectionData}/>
+                    <h1>Selection Sort</h1>
+                </div>
+                <div className="chart-row">
+                    <Chart data={this.state.insertionData}/>
+                    <h1>Insertion Sort</h1>
+                </div>
+                <div className="chart-row">
+                    <Chart data={this.state.bubbleData}/>
+                    <h1>Bubble Sort</h1>
+                </div>
+                <div className="chart-row">
+                    <Chart data={this.state.mergeData}/>
+                    <h1>Merge Sort</h1>
+                </div>
+                <div className="button-row">
                     <Button 
                         variant="contained" 
                         color="primary" 
-                        onClick={() => randomize(this, this.state.data)}>
+                        onClick={this.randomizeCharts}>
                         Randomize
-                    </Button>
-                    <div className="button-row">
-                        <Button
-                            className="sort-button"
-                            variant="contained"
-                            color="default"
-                            onClick={() => selectionSort(this)}>
-                        Selection Sort
-                        </Button>
-                        <Button
-                            className="sort-button"
-                            variant="contained"
-                            color="default"
-                            onClick={() => bubbleSort(this)}
-                        >
-                        Bubble Sort
-                        </Button>
-                        <Button
-                            className="sort-button"
-                            variant="contained"
-                            color="default"
-                            onClick={() => mergeSort(this)}
-                        >
-                        Merge Sort
-                        </Button>
-                    </div>
+                    </Button>  
+                    <Button 
+                        variant="contained" 
+                        color="default" 
+                        onClick={this.sortStep}>
+                        Next step
+                    </Button>  
                 </div>
             </div>
         )

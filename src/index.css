@@ -10,12 +10,12 @@ body {
     margin: auto;
 }
 
-.button-group {
+.chart-row {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: left;
     align-items: center;
-    margin-top: 25px;
+    margin: 10px 0px 0px 0px;
 }
 
 .button-row {
@@ -23,6 +23,11 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin: 30px 0px 0px 0px;
 }
 
+h1 {
+    font-family: Arial, sans-serif;
+    color: #62DAFB;
+    margin: 5px 5px 5px 10px;
+}

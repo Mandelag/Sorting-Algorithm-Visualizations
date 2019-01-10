@@ -1,96 +1,57 @@
 /* eslint-disable */
 
-export function randomize(component, arr){
+export function randomize(size){
     let newArr = []
-    for(let x=0; x<arr.length; x++){
-        newArr.push({
-            value: Math.floor(Math.random() * 100) + 1
-         })
+    for(let x=0; x<size; x++){
+        newArr.push(Math.floor(Math.random() * 100) + 1)
     }
-    component.setState({
-        data: newArr,
-    })
+    return newArr
  }
 
-export async function selectionSort(component){
-    let arr1 = []
-    let arr2 = []
-    let temp
-
-    component.state.data.map((n) => 
-         arr1.push(n.value)
-    )
-
-    for(let x=0; x<arr1.length-1; x++){
+export function selectionSort(arr){
+    for(let x=0; x<arr.length-1; x++){
         let index = x
         for(let y=index+1; y<arr1.length; y++){
-            if(arr1[y] < arr1[index]){
+            if(arr[y] < arr[index]){
                 index = y;
             }
         }
         if(index !== x){
-            temp = arr1[x]
-            arr1[x] = arr1[index]
-            arr1[index] = temp
+            temp = arr[x]
+            arr[x] = arr[index]
+            arr[index] = temp
         }
-
-        arr1.map((n) => {
-         arr2.push({value: n})
-        })
-
-        component.setState({
-         data: arr2,
-        })
-
-        await sleep(250)
-     
-        arr2 = []
     }
  }
 
- export async function bubbleSort(component){
-    let arr1 = []
-    let arr2 = []
+ export function bubbleSort(arr){
     let sorted = false
     let temp
-
-    component.state.data.map((n) => 
-        arr1.push(n.value)
-    )
     
      while(!sorted){
 
         sorted = true
 
-        for(let x=0; x<arr1.length-1; x++){
-            if(arr1[x+1] < arr1[x]){
+        for(let x=0; x<arr.length-1; x++){
+            if(arr[x+1] < arr[x]){
                 sorted = false
                 break
             }
         }
 
-        for(let x=0; x<arr1.length-1; x++){
-            if(arr1[x+1] < arr1[x]){
-                temp = arr1[x]
-                arr1[x] = arr1[x+1]
-                arr1[x+1] = temp
+        for(let x=0; x<arr.length-1; x++){
+            if(arr[x+1] < arr[x]){
+                temp = arr[x]
+                arr[x] = arr[x+1]
+                arr[x+1] = temp
             }
-            arr1.map((n) => {
-                arr2.push({value: n})
-            })
-            component.setState({
-                data: arr2,
-            })
-
-            await sleep(250)
-
-            arr2 = []
         
         } 
 
     }  
 }
 
+/*
 export function mergeSort(component){
     
     let arr1 = []
@@ -152,3 +113,4 @@ function merge(left, right, component) { //part of merge sort
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+*/
