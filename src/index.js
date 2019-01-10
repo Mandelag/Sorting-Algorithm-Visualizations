@@ -46,9 +46,8 @@ class App extends React.Component {
     }
 
     sortStep() {
-        let selection = selectionSort(this.state.selectionData.slice())
+        let selection = selectionSort(this.state.selectionData)
 
-        console.log(selection)
         this.setState({
             selectionData: selection
         })
